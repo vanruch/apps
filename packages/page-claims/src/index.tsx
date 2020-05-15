@@ -64,7 +64,7 @@ const Signature = styled.textarea`
   }
 `;
 
-function ClaimsApp (): React.ReactElement {
+function ClaimsApp(): React.ReactElement {
   const [didCopy, setDidCopy] = useState(false);
   const [ethereumAddress, setEthereumAddress] = useState<EthereumAddress | null>(null);
   const [signature, setSignature] = useState<EcdsaSignature | null>(null);
@@ -118,6 +118,8 @@ function ClaimsApp (): React.ReactElement {
     const { value: signatureJson } = event.target as HTMLInputElement;
 
     const { ethereumAddress, signature } = recoverFromJSON(signatureJson);
+
+    console.log('signature=', u8aToHex(signature));
 
     setEthereumAddress(ethereumAddress);
     setSignature(signature);
