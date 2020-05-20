@@ -17,11 +17,7 @@ jobs:
         with:
           token: ${{ secrets.GH_PAT }}
 
-      - name: Install Node.js, NPM and Yarn
-        uses: actions/setup-node@v1
-        with:
-          node-version: 10
-
+      - run: yarn install --immutable | grep -v 'YN0013'
       - name: Build/release Electron app
         uses: samuelmeuli/action-electron-builder@v1
         with:
